@@ -1,0 +1,40 @@
+@use "../abstracts/variables" as v;
+
+.button {
+  width: fit-content;
+  height: fit-content;
+  white-space: nowrap;
+  border-radius: 0.5rem;
+  border: 1px solid v.$light-primary; //stop the bounce on hover
+  background-color: v.$light-primary;
+  color: v.$text-color;
+  font-size: 1.2rem;
+  padding: 0.75rem;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 1px solid v.$light-secondary;
+    border-radius: 0;
+    color: v.$light-secondary;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  &--action {
+    background-color: purple;
+  }
+
+  &--adventure {
+    background-color: green;
+  }
+
+  &--animation {
+    background-color: blue;
+  }
+}

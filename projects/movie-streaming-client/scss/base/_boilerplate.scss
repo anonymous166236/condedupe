@@ -1,0 +1,25 @@
+@use "../abstracts/variables" as v;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%; //match default size set on browser
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: v.$dark-secondary;
+  color: v.$text-color;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}

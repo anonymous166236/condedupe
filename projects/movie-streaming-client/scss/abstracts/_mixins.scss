@@ -1,0 +1,32 @@
+@use "variables" as v;
+
+@mixin breakpoint($size) {
+  @media (min-width: map-get(v.$breakpoints, $size)) {
+    @content;
+  }
+}
+
+@mixin theme-font($category) {
+  @include theme-font-face($category);
+  font-family: map-get(v.$font-families, $category);
+}
+
+@mixin theme-font-face($category) {
+  @font-face {
+    font-family: map-get(v.$font-families, $category);
+    src: url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=DynaPuff&family=Oswald:wght@300&display=swap");
+  }
+}
+
+@mixin theme-button($theme) {
+  button {
+    background-color: map-get(v.$button-colours, $theme);
+    border: 1px solid map-get(v.$button-colours, $theme);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: transparent;
+      color: map-get(v.$button-colours, $theme);
+    }
+  }
+}

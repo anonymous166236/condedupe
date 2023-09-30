@@ -1,0 +1,29 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+.header {
+  // border: 2px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  background-color: v.$dark-primary;
+  margin: 1rem;
+  border-radius: 0.5rem;
+
+  .wishlist_container {
+    position: absolute;
+    overflow: scroll;
+    width: fit-content;
+    top: 100%;
+    right: 2rem;
+    padding: 1rem;
+    // border: 2px solid yellow;
+    z-index: 9999;
+    max-height: 70vh;
+    min-height: 10rem;
+    background-color: v.$dark-primary;
+    box-shadow: 0.2rem 0.3rem 0.4rem v.$light-secondary;
+  }
+}

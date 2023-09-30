@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--begin::Head-->
+<head>
+    <%- include('../../components/web-header') %>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body"
+      class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed"
+      style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+<!--begin::Main-->
+<!--begin::Root-->
+<div class="d-flex flex-column flex-root">
+    <!--begin::Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+        <%- include('../../components/left-aside') %>
+        <!--begin::Wrapper-->
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <%- include('../../components/kt-header') %>
+            <!--begin::Content
+            TODO: motrar todas las gestiones archivadas en una tabla
+            -->
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <!--begin::Entry-->
+                <div class="d-flex flex-column-fluid">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Dashboard-->
+                        <!--begin::Row-->
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <!--begin::Card-->
+                                <div class="card card-custom gutter-b">
+                                    <div class="card-header flex-wrap py-5">
+                                        <div class="card-title">
+                                            <h3 class="card-label">Gestiones archivadas</h3>
+                                        </div>
+                                        <div class="card-toolbar">
+
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <!--begin: Datatable-->
+                                        <table class="table table-row-dashed gy-5 gs-7 border rounded table-hover"
+                                               id="kt_datatable">
+                                            <thead>
+                                            <tr class="fw-bolder fs-6 px-7 text-uppercase">
+                                                <th>#</th>
+                                                <th>Cliente</th>
+                                                <th>Creación</th>
+                                                <th>Sector</th>
+                                                <th>Telefono</th>
+                                                <th>Movil</th>
+                                                <th>Clasificacion</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <!--end: Datatable-->
+                                    </div>
+                                </div>
+                                <!--end::Card-->
+                            </div>
+                        </div>
+                        <!--end::Row-->
+                        <!--end::Dashboard-->
+                    </div>
+                    <!--end::Container-->
+                </div>
+                <!--end::Entry-->
+            </div>
+            <!--end::Content-->
+            <%- include('../../components/bottom-footer.ejs') %>
+        </div>
+        <!--end::Wrapper-->
+    </div>
+    <!--end::Page-->
+</div>
+<!--end::Root-->
+
+<%- include('../../components/kt-scrolltop') %>
+
+<%- include('../../components/web-footer') %>
+<!--begin::Page Custom Javascript(used by this page)-->
+<script src="assets/js/custom/widgets.js"></script>
+<!--end::Page Custom Javascript-->
+<!--end::Javascript-->
+<script>
+    const url = `${window.location.origin}/api`;
+    moment.locale('es');
+    const dtTaskArchive = $("#kt_datatable").DataTable({
+        ajax: `${url}/tasks/archive`,
+        columns: [
+            {data: 'CODACTIVIDAD'},
+            {data: 'STRNOMBRESER'},
+            {data: '_FCHCREACION'},
+            {data: 'CODSECTOR'},
+            {data: 'TELEFONO'},
+            {data: 'MOVIL'},
+            {data: 'CODCLASIFICACION'}
+        ],
+        columnDefs: [
+            {
+                targets: [0],
+                render: function (data, type, row) {
+                    return `<a href="services/tasks/details/${data}">${data}</a>`;
+                }
+            }, {
+                targets: [2],
+                render: function (data, type, row) {
+                    return moment(data.substring(0, data.length - 1)).startOf('hour').fromNow()
+                }
+            }, {
+                targets: [3],
+                render: function (data, type, row) {
+                    return `${row.STRSECTOR}`;
+                }
+            }, {
+                targets: [4],
+                render: function (data, type, row) {
+                    const {MOVIL} = row;
+                    let other = MOVIL ? `-<a href="tel:${MOVIL}">${MOVIL}</a>` : '';
+
+                    return `<a href="tel:${data}">${data}</a>${other}`;
+                }
+            },
+            {
+                targets: [5],
+                visible: false
+            }, {
+                targets: [6],
+                render: function (data, type, row) {
+                    let color="badge-light-primary";
+                    if (row.CODCLASIFICACION == 'ILR')
+                        color="badge-light-danger";
+                    return `<span class="badge ${color}">${row.STRCLASIFICACION}</span>`;
+                }
+            }
+
+        ],
+        order: [[0, 'asc']]
+    })
+</script>
+</body>
+<!--end::Body-->
+</html>

@@ -1,0 +1,13 @@
+@use "../abstracts/variables" as v;
+
+.wishlist {
+  display: flex;
+  flex-direction: column;
+  color: v.$text-color;
+  background-color: v.$dark-secondary;
+
+  &__item {
+    width: 10rem;
+    height: auto;
+  }
+}

@@ -1,0 +1,6 @@
+@use "sass:math" as m;
+//get pixel to rems
+@function inrem($pixel) {
+  //divide by default font size i.e. 16
+  @return m.div($pixel, 16) + rem;
+}

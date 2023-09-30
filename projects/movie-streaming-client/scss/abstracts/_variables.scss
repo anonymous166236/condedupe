@@ -1,0 +1,36 @@
+// Using CSS variables would be better
+$text-color: hsl(0, 0%, 88%);
+
+$dark-primary: hsl(0, 0%, 12%);
+$dark-secondary: hsl(0, 0%, 18%);
+
+$light-primary: hsl(327, 100%, 47%);
+$light-secondary: hsl(327, 100%, 76%);
+
+$breakpoints: (
+  //650px, 900px, 1440px
+  "medium": 42em,
+  "large": 57em,
+  "xlarge": 90em
+);
+
+$font-families: (
+  "action": (
+    "Oswald",
+    sans-serif,
+  ),
+  "adventure": (
+    "Dancing Script",
+    cursive,
+  ),
+  "animation": (
+    "DynaPuff",
+    cursive,
+  ),
+);
+
+$button-colours: (
+  "action": hsl(0, 100%, 40%),
+  "adventure": rgb(0, 157, 0),
+  "animation": hsl(210, 100%, 41%),
+);

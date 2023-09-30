@@ -1,0 +1,27 @@
+@use "../abstracts/functions" as f;
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(f.inrem(33), f.inrem(16) + 2vw, f.inrem(44));
+}
+
+h2 {
+  font-size: clamp(f.inrem(28), f.inrem(12) + 1.5vw, f.inrem(38));
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}

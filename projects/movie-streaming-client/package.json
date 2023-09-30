@@ -1,0 +1,25 @@
+{
+  "name": "video-streaming-client-next",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e": "cypress open",
+    "build": "next build",
+    "start": "next start -p 8899",
+    "dev": "next dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^12.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-multi-carousel": "^2.8.2"
+  },
+  "devDependencies": {
+    "cypress": "^10.4.0",
+    "sass": "^1.54.4"
+  }
+}

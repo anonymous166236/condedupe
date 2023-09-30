@@ -1,0 +1,102 @@
+@use "../abstracts/mixins" as m;
+@use "../abstracts/variables" as v;
+
+.details_view {
+  // border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-start;
+  padding: 2rem;
+
+  @include m.breakpoint("large") {
+    flex-direction: row;
+  }
+
+  .poster_and_review_container {
+    // border: 2px solid red;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+
+    &__poster {
+      display: block;
+      width: 100%;
+    }
+
+    &__languages {
+      // border: 2px solid grey;
+      width: 100%;
+      display: flex;
+      padding: 0.25rem;
+      justify-content: flex-end;
+      span {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .details_container {
+    display: flex;
+    font: inherit;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: v.$dark-primary;
+    border-radius: 0.5rem;
+
+    &__heading_and_wishlist {
+      display: inherit;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .wishlist_button {
+        &--action {
+          @include m.theme-button("action");
+        }
+        &--adventure {
+          @include m.theme-button("adventure");
+        }
+        &--animation {
+          @include m.theme-button("animation");
+        }
+      }
+    }
+
+    &__tagline {
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+    &__description {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    &__reviews {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    &__users {
+      font-size: 1rem;
+      font-style: italic;
+    }
+  }
+}
+
+.font--action {
+  @include m.theme-font("action");
+}
+
+.font--adventure {
+  @include m.theme-font("adventure");
+}
+
+.font--animation {
+  @include m.theme-font("animation");
+}
